@@ -245,7 +245,14 @@ menu
 END
 chmod 644 /root/.profile
 
-# OpenSSL dan Cert
+# Cek dan install haproxy jika belum terinstall
+if ! dpkg -l | grep -q haproxy; then
+    sudo apt install -y haproxy
+else
+    echo "haproxy sudah terinstall"
+fi
+
+# Cek dan buat sertifikat self-signed jika belum ada
 if [ ! -f /etc/xray/xray.key ] || [ ! -f /etc/xray/xray.crt ]; then
     sudo mkdir -p /etc/xray
     sudo openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout /etc/xray/xray.key -out /etc/xray/xray.crt -subj "/C=ID/ST=Jakarta/L=Jakarta/O=NusantaraProject/CN=example.com"

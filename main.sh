@@ -254,14 +254,22 @@ else
     echo "haproxy sudah terinstall"
 fi
 
-# Cek dan buat sertifikat self-signed jika belum ada
-if [ ! -f /etc/xray/xray.key ] || [ ! -f /etc/xray/xray.crt ]; then
+# Fungsi untuk membuat sertifikat self-signed baru
+create_self_signed_cert() {
     sudo mkdir -p /etc/xray
     sudo openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout /etc/xray/xray.key -out /etc/xray/xray.crt -subj "/C=AU/ST=Some-State/L=City/O=Organization/OU=OrganizationalUnit/CN=common.name.com/emailAddress=email@example.com"
     echo "Sertifikat self-signed telah dibuat"
+}
+
+# Cek apakah sertifikat sudah ada
+if [ -f /etc/xray/xray.key ] && [ -f /etc/xray/xray.crt ]; then
+    echo "Sertifikat self-signed sudah ada, membuat yang baru..."
+    sudo rm /etc/xray/xray.key /etc/xray/xray.crt
+    create_self_signed_cert
 else
-    echo "Sertifikat self-signed sudah ada"
-fi 
+    create_self_signed_cert
+fi
+
 
 # // Enable & Start & Restart Websocket Service
 systemctl enable ws-dropbear.service

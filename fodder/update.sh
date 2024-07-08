@@ -27,18 +27,41 @@ fun_bar() {
     tput cnorm
 }
 res1() {
-    wget https://raw.github.com/Felixind/NusantaraProjectAutoScript-VPS/main/menu/menu.zip
+    wget https://raw.githubusercontent.com/elsangithub/Auto-SC/main/menu/menu.zip
     unzip menu.zip
     chmod +x menu/*
     mv menu/* /usr/local/sbin
     rm -rf menu.zip
     rm -rf update.sh
 }
-# Installasi paket dan pembuatan sertifikat self-signed
-netfilter-persistent
+#!/bin/bash
+
+# Perbarui daftar paket
 sudo apt update
-sudo apt install -y haproxy
-sudo openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout /etc/xray/xray.key -out /etc/xray/xray.crt -subj "/C=ID/ST=Jakarta/L=Jakarta/O=NusantaraProject/CN=example.com"
+
+# Cek dan install netfilter-persistent jika belum terinstall
+if ! dpkg -l | grep -q netfilter-persistent; then
+    sudo apt install -y netfilter-persistent
+else
+    echo "netfilter-persistent sudah terinstall"
+fi
+
+# Cek dan install haproxy jika belum terinstall
+if ! dpkg -l | grep -q haproxy; then
+    sudo apt install -y haproxy
+else
+    echo "haproxy sudah terinstall"
+fi
+
+# Cek dan buat sertifikat self-signed jika belum ada
+if [ ! -f /etc/xray/xray.key ] || [ ! -f /etc/xray/xray.crt ]; then
+    sudo mkdir -p /etc/xray
+    sudo openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout /etc/xray/xray.key -out /etc/xray/xray.crt -subj "/C=ID/ST=Jakarta/L=Jakarta/O=NusantaraProject/CN=example.com"
+    echo "Sertifikat self-signed telah dibuat"
+else
+    echo "Sertifikat self-signed sudah ada"
+fi
+
 
 clear
 echo -e "\033[1;36m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"

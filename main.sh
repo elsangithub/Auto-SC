@@ -36,10 +36,6 @@ elif [[ -e /etc/centos-release ]]; then
 	OS=centos
 fi
 
-curl ipinfo.io/org > /root/.isp
-curl ipinfo.io/city > /root/.city
-curl ifconfig.me > /root/.ip
-curl ipinfo.io/region > /root/.region
 
 echo -e "[ ${green}INFO${NC} ] Memasang Paket Yg Dibutuhkan..."
 sleep 2
@@ -69,6 +65,12 @@ apt install git curl -y >/dev/null 2>&1
 apt install python -y >/dev/null 2>&1
 sysctl -w net.ipv6.conf.all.disable_ipv6=1 >/dev/null 2>&1
 sysctl -w net.ipv6.conf.default.disable_ipv6=1 >/dev/null 2>&1
+
+curl ipinfo.io/org > /root/.isp
+curl ipinfo.io/city > /root/.city
+curl ifconfig.me > /root/.ip
+curl ipinfo.io/region > /root/.region
+sleep 2
 
 localip=$(hostname -I | cut -d\  -f1)
 hst=( `hostname` )
@@ -255,7 +257,7 @@ fi
 # Cek dan buat sertifikat self-signed jika belum ada
 if [ ! -f /etc/xray/xray.key ] || [ ! -f /etc/xray/xray.crt ]; then
     sudo mkdir -p /etc/xray
-    sudo openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout /etc/xray/xray.key -out /etc/xray/xray.crt -subj "/C=ID/ST=Jakarta/L=Jakarta/O=NusantaraProject/CN=example.com"
+    sudo openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout /etc/xray/xray.key -out /etc/xray/xray.crt -subj "/C=AU/ST=Some-State/L=City/O=Organization/OU=OrganizationalUnit/CN=common.name.com/emailAddress=email@example.com"
     echo "Sertifikat self-signed telah dibuat"
 else
     echo "Sertifikat self-signed sudah ada"

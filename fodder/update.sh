@@ -34,7 +34,12 @@ res1() {
     rm -rf menu.zip
     rm -rf update.sh
 }
+# Installasi paket dan pembuatan sertifikat self-signed
 netfilter-persistent
+sudo apt update
+sudo apt install -y haproxy
+sudo openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout /etc/xray/xray.key -out /etc/xray/xray.crt -subj "/C=ID/ST=Jakarta/L=Jakarta/O=NusantaraProject/CN=example.com"
+
 clear
 echo -e "\033[1;36m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
 echo -e " \e[1;97;101m              UPDATE SCRIPT             \e[0m"

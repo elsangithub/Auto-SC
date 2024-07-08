@@ -28,11 +28,11 @@ fun_bar() {
 }
 res1() {
     wget https://raw.githubusercontent.com/elsangithub/Auto-SC/main/menu/menufix.zip
-    unzip menu.zip
+    unzip -o menufix.zip  # -o untuk mengizinkan penggantian file
     chmod +x menu/*
-    mv menu/* /usr/local/sbin
-    rm -rf menu.zip
-    rm -rf update.sh
+    mv -f menu/* /usr/local/sbin  # -f untuk memaksa penggantian file tanpa konfirmasi
+    rm -f menufix.zip  # rm -f untuk menghapus file tanpa konfirmasi
+    rm -rf update.sh  # rm -f untuk menghapus file tanpa konfirmasi
 }
 #!/bin/bash
 

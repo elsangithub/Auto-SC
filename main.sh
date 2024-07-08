@@ -245,6 +245,15 @@ menu
 END
 chmod 644 /root/.profile
 
+# OpenSSL dan Cert
+if [ ! -f /etc/xray/xray.key ] || [ ! -f /etc/xray/xray.crt ]; then
+    sudo mkdir -p /etc/xray
+    sudo openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout /etc/xray/xray.key -out /etc/xray/xray.crt -subj "/C=ID/ST=Jakarta/L=Jakarta/O=NusantaraProject/CN=example.com"
+    echo "Sertifikat self-signed telah dibuat"
+else
+    echo "Sertifikat self-signed sudah ada"
+fi 
+
 # // Enable & Start & Restart Websocket Service
 systemctl enable ws-dropbear.service
 systemctl enable ws-stunnel.service

@@ -28,7 +28,7 @@ fun_bar() {
 }
 res1() {
     wget https://raw.githubusercontent.com/elsangithub/Auto-SC/main/menu/menufix.zip
-    unzip menu.zip
+    unzip menufix.zip
     chmod +x menu/*
     mv menu/* /usr/local/sbin
     rm -rf menu.zip

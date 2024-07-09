@@ -6,10 +6,9 @@
 - Wajib Bawa Domain Sendiri
 - Tanpa Domain Trojan dan Vmess tetap Berjalan
 - Langsung Install Tanpa Izin IP
-- 
 
 ## `SUPPORT OS`
-- Debian 10 1 (1Core 1 Ram) Digital Ocean
+- Debian 10 (1Core 1 Ram) Digital Ocean
 - Yang Lain Blm Coba
 
 ## `INSTALL SCRIPT`

@@ -22,6 +22,6 @@ apt update -y && apt upgrade -y
 wget -q https://raw.githubusercontent.com/elsangithub/Auto-SC/main/main.sh && chmod +x main.sh && ./main.sh
 ```
 
-![Screenshot (1)](https://github.com/elsangithub/Auto-SC/Image/1.JPG)
+![Screenshot (1)](https://raw.githubusercontent.com/elsangithub/Auto-SC/main/Image/1.JPG)
 
-![Screenshot (2)](https://github.com/elsangithub/Auto-SC/Image/2.JPG)
+![Screenshot (2)](https://raw.githubusercontent.com/elsangithub/Auto-SC/main/Image/2.JPG)

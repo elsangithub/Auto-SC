@@ -22,6 +22,8 @@ apt update -y && apt upgrade -y
 wget -q https://raw.githubusercontent.com/elsangithub/Auto-SC/main/main.sh && chmod +x main.sh && ./main.sh
 ```
 
+## `PANEL UTAMA`
 ![Screenshot (1)](https://raw.githubusercontent.com/elsangithub/Auto-SC/main/Image/1.JPG)
 
+## `PANEL INFO`
 ![Screenshot (2)](https://raw.githubusercontent.com/elsangithub/Auto-SC/main/Image/2.JPG)

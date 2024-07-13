@@ -8,7 +8,7 @@
 - Langsung Install Tanpa Izin IP
 
 ## `SUPPORT OS`
-- Debian 10 (1Core 1 Ram) Digital Ocean
+- Debian 10 (1Core 1 Ram) (Digital Ocean dan Linode)
 - Yang Lain Blm Coba
 
 ## `INSTALL SCRIPT`

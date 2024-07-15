@@ -6,6 +6,7 @@
 - Wajib Bawa Domain Sendiri
 - Tanpa Domain Trojan dan Vmess tetap Berjalan
 - Langsung Install Tanpa Izin IP
+- by Default "/var/log/xray/access.log" di matikan bagi yang perlu silahkan di aktikan sendiri
 
 ## `SUPPORT OS`
 - Debian 10 (1Core 1 Ram) (Digital Ocean dan Linode)
